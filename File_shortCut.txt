@@ -1,0 +1,78 @@
+package file;
+import java.io.*;
+public class filing {
+
+	public static void main(String[] args) throws IOException {
+	   
+		FileReader fw=null;
+		BufferedReader bf=null;
+		try {
+			fw=new FileReader("input.txt");
+			bf= new BufferedReader(fw);
+			String line="";
+			while((line=bf.readLine())!=null) {
+				System.out.println(line);
+			}
+			
+		}finally {
+			fw.close();
+			bf.close();
+		}
+	}
+
+}
+
+
+package file;
+import java.io.*;
+import java.util.Scanner;
+public class filing {
+	public static void main(String[] args) throws Exception {
+		Scanner in=new Scanner(System.in);
+		//File fle=null;
+		FileWriter fwrite=null;
+		BufferedWriter bw=null;
+		PrintWriter pw=null;
+		
+		try {
+		    // fle= new File();
+			 fwrite =new FileWriter("F:\\\\STUDY MATERIAL\\\\JAVA\\\\File Handeling\\\\output.txt",true);
+			 bw =new BufferedWriter(fwrite);
+			 pw=new PrintWriter(bw);
+			String str=in.nextLine();
+			pw.println(str);
+		}finally {
+			bw.close();
+			pw.close();
+		}
+		
+		
+}}
+
+
+
+package file;
+import java.io.*;
+import java.util.Scanner;
+public class filing {
+	public static void main(String[] args) throws Exception {
+		Scanner in=new Scanner(System.in);
+		//File fle=null;
+		FileWriter fwrite=null;
+		BufferedWriter bw=null;
+		PrintWriter pw=null;
+		
+		try {
+		    // fle= new File();
+			 fwrite =new FileWriter("F:\\\\STUDY MATERIAL\\\\JAVA\\\\File Handeling\\\\output.txt");
+			 bw =new BufferedWriter(fwrite);
+			 pw=new PrintWriter(bw);
+			String str=in.nextLine();
+			pw.println(str);
+		}finally {
+			bw.close();
+			pw.close();
+		}
+		
+		
+}}
