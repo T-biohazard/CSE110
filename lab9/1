@@ -1,0 +1,32 @@
+
+package lab9;
+
+import java.io.File;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+public class problem01 {
+    public static void main(String[] args){
+      
+        
+       
+    try{
+        File file=new File("C:/Users/Desktop/Lab08_01.txt");
+        if(file.exists()){
+             PrintWriter out =new PrintWriter(file); 
+          int[] arr = new int[100]; 
+     
+     for (int i=0;i<arr.length;i++){
+         arr[i]=(int)(Math.random()*arr.length-1);
+         System.out.println(" "+arr[i]); 
+     }
+     out.close();
+        }
+       
+        }
+       catch(Exception e){
+           System.out.print(e);
+       } 
+        
+    }
+}
