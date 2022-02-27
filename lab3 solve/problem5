@@ -1,0 +1,31 @@
+package Lab_3;
+import java.util.*;
+public class a_5 {
+     public static void main(String[] args) {
+       Scanner input= new Scanner(System.in);
+       int arra[][]=new int[4][4];
+        for(int i=0;i<4;i++) {
+            for(int j=0;j<4;j++) {
+                arra[i][j]=input.nextInt();
+            }
+        }
+        int n=4;
+        System.out.println("Sorting it by values of column of 3");
+
+           for (int i = 0; i < ( n- 1 ); i++) {
+               for (int j = 0; j < n- i - 1; j++) {
+                 if (arra[j][2] > arra[j+1][2]) 
+                 {
+                 int  temp = arra[j][2];
+                   arra[j][2] = arra[j+1][2];
+                   arra[j+1][2] = temp;
+                 }
+               }
+             }
+            for(int i=0;i<4;i++) {
+                for(int j=0;j<4;j++) {
+                    System.out.print(arra[i][j]+" ");
+                }
+                System.out.println();
+            }
+    }}
