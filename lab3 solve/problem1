@@ -1,0 +1,50 @@
+package Lab_3;
+public class a_1 {
+         public static void main(String[] args) {
+          int[][] arr = new int[4][4];
+          int[] col=new int[4];
+              int[] row=new int[4];
+              for(int i=0;i<4;i++) {
+                  row[i]=0;
+                  col[i]=0;
+              }
+
+             for (int i=0;i<arr.length;i++){
+                 int s=0;
+             for (int j=0;j<arr.length;j++){
+                 arr[i][j]=(int)(Math.random()*2);
+                     s+=arr[i][j];
+              System.out.print(arr[i][j]);
+                 }
+                row[i]=s;
+              System.out.println();
+             }
+
+             for (int i=0;i<arr.length;i++){
+                 int s=0;
+             for (int j=0;j<arr.length;j++){
+                     s+=arr[j][i];
+                 }
+                col[i]=s;
+             }
+
+             System.out.println("The largest row index is "+minmax(row));
+             System.out.println("The largest column index is "+minmax(col));
+
+        }
+    public static int minmax(int[] ar) {
+        int max=ar[0];
+        for(int i=1;i<ar.length;i++) {
+            if(ar[i]>max) {
+                max=ar[i];
+            }
+        }
+        int in=0;
+        for(int i=0;i<ar.length;i++) {
+            if(ar[i]==max) {
+                in=i;
+                break;
+            }
+        }
+        return in;
+}}
