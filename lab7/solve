@@ -1,0 +1,245 @@
+// Problem A:
+package Lab7;
+
+import java.util.Calendar;
+
+public class Account {
+    
+    privete int id=0;
+    privete double balance=0.0;
+    privete double annualInterestRate=0.0;
+
+    private Calendar dataCreated;
+    
+    public Account (){
+        
+    }
+    
+    
+    
+     public int getId(){
+        return id;
+    }
+    public void setId( int id ){
+        this.id = id;
+    }
+
+    public double getBalance(){ return balance;
+    }
+    public void setBalance( double balance ){
+        this.balance = balance;
+    }
+
+    public double getAnnualInterestRate(){
+        return annualInterestRate;
+    }
+    public void setAnnualInterestRate( double annualInterestRate ){
+        this.annualInterestRate = annualInterestRate;
+    }
+    
+     public Calendar getDataCreated(){
+        return dataCreated;
+    }
+    public void setDataCreated( Calendar calendar ){
+        this.dataCreated = calendar;
+    }
+
+    public double getMonthlyInterestRate(){
+        return this.annualInterestRate/12;
+    }
+      public double getMonthlyInterestAmount(){
+        return balance*getMonthlyInterestRate();
+    }
+    public void withdraw( double money ){
+        if( money <= this.balance )
+        this.balance = this.balance-money;
+        else
+            System.out.println("You don't have enough money to withdraw");
+    }
+    public void deposit( double money ){
+        this.balance = this.balance+money;
+    }
+}
+    
+
+
+
+//Problem B:
+
+package Lab7;
+
+public class CheckingAccount extends Account {
+    private double overdraft;
+    
+CheckingAccount(){
+    
+}     
+ public void setoverdraft(double overdraft){   
+     this.overdraft=overdraft;
+ }
+ 
+ double getoverdraft(){
+     return overdraft;
+ }   
+  public void withdraw( double money, double overdraft){
+        if( money >= overdraft )
+        setBalance(money);
+        else
+            System.out.println("Withdraw doesn't satisfy overdraft");
+    }
+
+}
+    
+
+
+
+package Lab7;
+
+import java.util.Calendar;
+
+public class SavingsAccount extends Account{
+private String cardNo;
+private Calendar expireDate; 
+private double creditBalance=this.getBalance()*3;
+
+public SavingsAccount(){
+    
+}
+
+public void setcardNo(String cardNo){
+    this.cardNo=cardNo;
+}
+
+public String getcardNo(){
+    return cardNo;
+}
+public Calendar getExpireDate(){
+        return expireDate;
+    }
+
+    public double getCreditBalance() {
+
+        return creditBalance;
+    }
+}
+
+
+
+
+// Problem  C:
+
+package Lab7;
+import java.util.*;
+public class main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        ArrayList<Account> AccountList = new ArrayList<>();
+        while (true) {
+            System.out.println("Press (1) for creating a Checking Account");
+            System.out.println("Press (2) for creating a Saving Account\n0 for Next");
+            int a = in.nextInt(); 
+        
+            if (a == 1) {
+                CheckingAccount x = new CheckingAccount();
+
+                System.out.println("Enter Account ID:");
+                x.setId(in.nextInt());
+                in.nextLine();
+                System.out.println("Enter Account Balance:");
+                x.setBalance(in.nextInt());
+                in.nextLine();
+                System.out.println("Enter Account Annual Interest Rate(%):");
+                x.setAnnualInterestRate(in.nextInt());
+                in.nextLine();
+                System.out.println("Enter Account Over Draft:");
+                x.setoverdraft(in.nextDouble());
+                in.nextLine();
+                AccountList.add(x);
+                System.out.println("Checking account created Successfully for ID:" + x.getId() + " at " + x.getDataCreated().getTime());
+
+            } else if (a == 2) {
+                //int id, double balance, double annualInterestRate
+                SavingsAccount y = new SavingsAccount();
+
+                System.out.println("Enter Account ID:");
+                y.setId(in.nextInt());
+                in.nextLine();
+                System.out.println("Enter Account Balance:");
+                y.setBalance(in.nextInt());
+                in.nextLine();
+                System.out.println("Enter Account Annual Interest Rate(%):");
+                y.setAnnualInterestRate(in.nextInt());
+                in.nextLine();
+                System.out.println("Saving account created Successfully for ID:" + y.getId() + " at " + y.getDataCreated().getTime());
+                System.out.println("Your card No:" + y.getcardNo() + " Expire Date:" + y.getExpireDate().getTime());
+                AccountList.add(y);
+            } else if (a == 0)
+                break;
+            
+    } while (true) {
+            System.out.println("Press (1) for withdraw");
+            System.out.println("Press (2) for deposit\n0 for next");
+            int b = in.nextInt();
+            if (b == 1) {
+                System.out.println("Account ID:");
+                int Aid = in.nextInt();
+                for (Account account : AccountList) {
+                    if (account.getId() == Aid) {
+                        System.out.println("Withdraw Amount:");
+                        if( account instanceof CheckingAccount ) {
+                            double x = in.nextDouble();
+                            ((CheckingAccount) account).withdraw(x, ((CheckingAccount) account).getoverdraft());
+                        }
+                        else
+                            account.withdraw(in.nextDouble());
+                    }
+                }
+            } else if (b == 2) {
+                System.out.println("Account ID:");
+
+                int Aid = in.nextInt();
+                for (Account account : AccountList) {
+                    if (account.getId() == Aid) {
+                        System.out.println("Deposit Amount :");
+                        account.deposit(in.nextDouble());
+                    }
+                }
+
+            } else if (b == 0) {
+                break;
+            }
+    }
+        
+     while(true){
+                System.out.println("Press (1) for detail");
+                System.out.println("Press (2) for exit");
+                int c = in.nextInt();
+                if( c == 1 ){
+                    System.out.println("Account ID:");
+                    int Aid = in.nextInt();
+                    for (Account account : AccountList) {
+                        if (account.getId() == Aid) {
+                            System.out.println("Detail for account :" + Aid);
+                            System.out.println("Balance :" + account.getBalance() + "$");
+                            System.out.println("Account Created :" + account.getDataCreated().getTime());
+                            System.out.println("Annually Interest Rate :" + account.getAnnualInterestRate() + "%");
+                            System.out.println("Monthly Interest :" + account.getMonthlyInterestAmount() + "$");
+                            if (account instanceof SavingsAccount) {
+                                System.out.println("Account Type : Saving");
+                                System.out.println("Card No :" + ((SavingsAccount) account).getcardNo());
+                                System.out.println("Credit Card Balance : " + ((SavingsAccount) account).getCreditBalance() + "$");
+                                System.out.println("Expire Date :" + ((SavingsAccount) account).getExpireDate().getTime());
+
+                            } else {
+                                System.out.println("Account Type : Checking");
+                                System.out.println("Over Draft :" + ((CheckingAccount) account).getoverdraft()+"$");
+                            }
+                        }
+                    }
+                }
+                else if( c == 2 ) break;
+            }
+
+        }
+
+}
