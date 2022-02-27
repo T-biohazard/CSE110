@@ -1,0 +1,39 @@
+
+package lab_8_2;
+    public class MyException extends Exception{
+        public MyException(String message) {
+            super(message);
+        }
+    }
+
+
+
+
+package lab_8_2;
+import java.util.*;
+
+public class product {
+    
+    public static int productCheck(int weight) throws MyException {
+        if (weight >= 100) {
+            return weight;
+        } else {
+            throw new MyException("Product is invalid");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int weight = in.nextInt();
+        try {
+            System.out.println(productCheck(weight));
+        } catch (MyException e) {
+           System.out.println(e);
+        }
+    }
+}
+    
+    
+     
+
+
