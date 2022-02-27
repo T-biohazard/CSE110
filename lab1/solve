@@ -1,0 +1,128 @@
+//Md Tahsin  
+
+//#1_problem:
+package Assignment.one;
+import java.util.Scanner;
+public class one {
+     public static void main(String[] args){
+         Scanner a = new Scanner(System.in);
+int x = a.nextInt();
+    if(x%2==0 || x%3==0){
+    System.out.print("True");
+    }
+    else{
+        System.out.println("False");
+    }
+    }
+}
+ 
+
+//#2_problem:
+package Assignment.one;
+import java.util.Scanner;
+public class two {
+     public static void main(String[] args){
+         Scanner a = new Scanner(System.in);
+int x = a.nextInt();
+      int y= x/525600;
+      int d = (x%525600)/1440;   
+      System.out.printf("%d has approx %d years %d days",x,y,d);
+      }
+}
+ 
+
+
+
+//#3_problem:
+
+package Assignment.one;
+import java.util.Scanner;
+import java.lang.Math;
+public class three {
+    static Scanner input=new Scanner(System.in);
+    public static void main(String[] args) {
+
+        double a,b,c;
+        System.out.print("Enter a,b,c :");
+        a=input.nextDouble();
+        b=input.nextDouble();
+        c=input.nextDouble();
+
+       double dis=Math.pow(b,2)-4ac;
+
+       if(dis>0){
+           double r1=(-b+Math.sqrt(dis))/2a;
+           double r2=(-b-Math.sqrt(dis))/2a;
+
+           System.out.printf("The equation has two roots :%.5f and %.5f",r1,r2);
+       }
+       else if(dis==0){
+           double r1=(-b+Math.sqrt(dis))/2*a;
+           System.out.printf("The equation has one root : %.5f",r1);
+       }
+       else{
+           System.out.println("The equation has no real roots");
+       }
+
+    }
+}
+
+ 
+
+//#4_problem:
+
+package Assignment.one;
+import java.util.Scanner;
+public class four {
+        static Scanner input=new Scanner(System.in);
+    public static void main(String[] args) {
+
+
+        System.out.print("Enter exchange rate :");
+        double r=input.nextDouble();
+        System.out.print("Enter 0 for USD to BDT & 1 for BDT to USD : ");
+        int d=input.nextInt();
+        if(d==0){
+            System.out.print("Enter USD:");
+            double usd=input.nextDouble();
+            System.out.printf("%.2f taka",usd*r);
+        }
+        else{
+            System.out.print("Enter BDT:");
+            double taka=input.nextDouble();
+            System.out.printf("%.2f USD",taka/r);
+        }
+
+    }
+}
+ 
+ 
+
+
+//#5_problem:
+
+
+package Assignment.one;
+import java.util.Scanner;
+public class five {
+    static Scanner input=new Scanner(System.in);
+    public static void main(String[] args) {
+        System.out.print("Enter  centre and radius");
+        int p,q,r;
+        p=input.nextInt();
+        q=input.nextInt();
+        r=input.nextInt();
+        System.out.print("Enter  checking point:");
+        int x=input.nextInt();
+        int y=input.nextInt();
+
+        double dis=Math.sqrt(Math.pow(p-x,2)+Math.pow(q-x,2));
+        if(dis>r){
+            System.out.println("Outside of the circle");
+        }
+        else System.out.println("Inside the Circle");
+    }
+}
+ 
+
+
