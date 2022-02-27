@@ -1,0 +1,67 @@
+class Book{
+    
+    private int ISBN;
+    private String bookTitle;
+    private int numberOfPages;
+    private int count;
+    
+    void setISBN(int ISBN){
+    this.ISBN = ISBN;
+    }
+    int getISBN(){
+     return ISBN;
+    }
+    
+    void setbookTitle(String bookTitle){
+    this.bookTitle = bookTitle;
+    }
+    String getbookTitle(){
+     return bookTitle;
+    }
+    
+    void setnumberOfPages(int numberOfPages){
+    this.numberOfPages = numberOfPages;
+    }
+    int getnumberOfPages(){
+     return numberOfPages;
+    }
+    
+    public void Book(int ISBN,String bookTitle, int numberOfPages){
+    }
+    public void Book(){    
+    }
+}
+
+
+package lab4_2;
+import java.util.*;
+class main{
+    public static void displayAll(Book[] BookArray ){
+        for( int i = 0 ; i < 5 ; i++ ){
+            System.out.println(BookArray[i].toString());
+        }
+    }
+    public static boolean isHeavier( Book book ){
+        return( book.getnumberOfPages() > 500);
+    }
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        Book[] BookArray = new Book[5];
+        x:while(true){
+        for( int i = 0 ; i < 5 ; i++ ){
+        System.out.println((i+1) + "st book Detail");
+        BookArray[i] = new Book();
+        System.out.printf("ISBN: ");
+        BookArray[i].setISBN(sc.nextInt());
+        sc.nextLine();
+        System.out.printf("Title: ");
+        BookArray[i].setbookTitle(sc.nextLine());
+        System.out.printf("Pages: ");
+        BookArray[i].setnumberOfPages(sc.nextInt());
+        }
+       
+        
+}}}
+
+
+ 
