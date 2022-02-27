@@ -1,0 +1,24 @@
+
+package lab8_3;
+import java.util.*;
+public class ArrayOutOfBound {
+  public static void main(String[] args){
+     Scanner in=new Scanner(System.in);
+      int[] arr = new int[100]; 
+     
+     for (int i=0;i<arr.length;i++){
+         arr[i]=(int)(Math.random()*arr.length-1);
+         System.out.println(" "+arr[i]); 
+     }
+     try{
+         int indx=in.nextInt();
+     System.out.println(" "+arr[indx]);
+     }
+     catch(IndexOutOfBoundsException e){
+         System.out.println(e);
+     }
+  }
+}
+
+
+ 
