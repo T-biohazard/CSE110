@@ -1,0 +1,39 @@
+
+package lab9;
+import java.io.*;
+import java.util.Scanner;
+
+public class problem3 {
+    
+	public static void main(String[] args) throws IOException {
+		
+		
+
+		try { 
+                    File file =new File("txt");
+                    while(file.exists()){
+                        file.createNewFile();
+                    }
+                    PrintWriter tx=new PrintWriter(file);
+                    tx.close();
+                    
+                 
+                    FileInputStream k =new FileInputStream("file.txt"); 
+                    InputStreamReader reader =new InputStreamReader(k,"UTF-8"); 
+                    
+                    int c;
+                    while((c=reader.read())!=-1){
+                        System.out.print((char)c);
+                    }
+                    reader.close();
+                }
+                 catch(IOException e){
+                        System.out.print(e);
+
+                 }   
+                    
+                }	
+		
+                        }	
+        
+
