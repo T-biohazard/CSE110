@@ -1,0 +1,209 @@
+
+package LabTest;
+import java.util.Calendar;
+import java.util.*;
+
+public abstract class Employee {
+     private String firstname;
+    private String lastname;
+    private String  securitynumber;
+    private Calendar birthdate;
+
+    public Employee(String fname,String lname,String snum){
+        firstname=fname;
+        lastname=lname;
+        securitynumber=snum;
+        birthdate=Calendar;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public Calendar getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(Calendar birthdate) {
+                  
+        this.birthdate = birthdate;
+    }
+
+    public void setSecuritynumber(String securitynumber) {
+        this.securitynumber = securitynumber;
+    }
+
+    public String getSecuritynumber() {
+        return securitynumber;
+    }
+    public abstract String toString();
+    public abstract double earning();
+} //employee
+
+
+
+
+
+
+class HourlyEmployee extends Employee{
+
+    private double wage;
+    private double hour;
+    public HourlyEmployee(String fname, String lname,String snum,double wage,double hour){
+        super(fname, lname, snum);
+        this.wage=wage;
+        this.hour=hour;
+    }
+
+    public void setWage(double wage) {
+        this.wage = wage;
+    }
+
+    public double getWage() {
+        return wage;
+    }
+
+    public void setHour(double hour) {
+        this.hour = hour;
+    }
+
+    public double getHour() {
+        return hour;
+    }
+    @Override
+    public double earning(){
+        return getWage()*getHour();
+        
+    }
+    public String toString(){
+        return getFirstname()+getLastname()+getSecuritynumber()+getBirthdate().getTime()+getWage()+getHour()+ " ";
+    }
+}
+//Hourly Employee
+
+
+
+ class salariedEmployee extends Employee {
+
+    private double weeklysalaray;
+
+    public salariedEmployee(String fname, String lname,String snum, double weksal){
+        super(fname,lname,snum);
+        weeklysalaray=weksal;
+    }
+
+    public void setWeeklysalaray(double weeklysalaray) {
+        this.weeklysalaray = weeklysalaray;
+    }
+
+    public double getWeeklysalaray() {
+        return weeklysalaray;
+    }
+    @Override
+    public double earning(){
+        return getWeeklysalaray()*4.2;//monthly 30days
+        
+    }
+    public String toString(){
+        return getFirstname()+getLastname()+getSecuritynumber()+getBirthdate().getTime()+getWeeklysalaray()+ " ";
+    }
+}
+//salaried Employee 
+
+
+
+
+ class Main {
+    public static ArrayList<Employee> obj = new ArrayList<Employee>();
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        Calendar calendar = Calendar.getInstance();
+        int sum;
+        boolean k = false;
+        System.out.println("Press 1 for salaried Employee");
+        System.out.println("Press 2 for Hourly Employee");
+        int x = in.nextInt();
+        while (true) {
+            
+            if (x == 1) {
+                Employee obj1 = new salariedEmployee("a","b","21232",343948);
+                obj.add(obj1);
+                for(int i=0;i< obj.size();i++){
+                    System.out.println(obj.get(i).earning());
+                }
+            }
+            else if(x==2){
+                Employee obj2 = new HourlyEmployee("a","b","2123",2034,3434);
+                obj.add(obj2);
+                for(int i=0;i< obj.size();i++){
+                    System.out.println(obj.get(i).earning());
+                }
+            }
+           else{
+               
+                break;
+            }
+        }                   //1
+        
+        
+        
+        class Bonus{     //3
+    private String bonustype;
+    private double amount;
+    public void setbonustype(String bonustype){
+        this.bonustype=bonustype;
+    }
+    public void setamount(double amount){
+        this.amount=amount;
+    }
+    public Bonus(){
+        this.bonustype="";
+        this.amount=0;
+    }
+    public Bonus(String bonustype,double amount){
+        this.bonustype=bonustype;
+        this.amount= amount;
+    }
+    public void display(){
+        System.out.println("The bonus type is : "+bonustype+
+                "\nThe bonus amount is : "+amount);
+    }
+}
+        
+        
+        
+        //5
+        public boolean compare(salariedEmployee x,HourlyEmployee y){
+            if(x.earning()==y.earning())
+                return true;
+            else
+                return false;
+        }
+        
+       
+       public static searchemployee(String security){     //4   
+            for(Employee ls:obj){
+                if(ls.getSecuritynumber()==security){
+                    System.out.println(ls.toString());
+                }
+            }
+        } 
+
+
+        }
+}
+
+
