@@ -1,0 +1,211 @@
+// #Problem_01:
+
+package assIGNMENT2.assign2;
+import java.util.Scanner;
+public class a1 {
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter the number of student:");    
+        int n=in.nextInt();
+        int[] arr= new int[1000]; 
+        System.out.printf("enter %d scores:",n);
+       for(int i=0;i<n;i++){
+          arr[i]= in.nextInt();    
+       }
+       int max=arr[0];
+       for(int i=1;i<=n;i++){
+       if (arr[i]>max){
+           max=arr[i];
+          }
+       }
+        int a1=max-10;
+       int b1=max-20;
+       int c1=max-30;
+       int d1=max-40;
+       for(int  i=0;i<n;i++){
+            if(arr[i]>=a1){
+              System.out.println("Student "+i+" score is "+arr[i]+" and grade is A");
+              }
+              else if(arr[i]>=b1){
+              System.out.println("Student "+i+" score is "+arr[i]+" and grade is B");
+              }
+              else if(arr[i]>=c1){
+              System.out.println("Student "+i+" score is "+arr[i]+" and grade is C");
+              } 
+              else if(arr[i]>=d1){
+              System.out.println("Student "+i+" score is "+arr[i]+" and grade is D");
+              }
+              else System.out.println("Student "+i+" score is "+arr[i]+" and grade is F");
+       }
+    }
+}
+ 
+
+
+
+// #Problem02:
+
+package assIGNMENT2.assign2;
+
+import java.util.Scanner;
+public class a2 {
+    public static void main(String[] args){
+        Scanner in  = new Scanner(System.in);
+                int arra[]=new int [1000];
+                for(int i=0;i<=100;i++){
+                    arra[i]=0;
+                }
+                int n=1;
+                for(;n!=0;){
+                    n=in.nextInt();
+                    arra[n]++;
+                }
+                for(int i=1;i<=100;i++){
+                    if(arra[i]>0){
+                        System.out.println(i + " occurs " +arra[i]+" times");
+                    }
+                }
+    }
+}
+ 
+// #Problem_3:
+
+package assIGNMENT2.assign2;
+import java.util.Scanner;
+public class a3 {
+    public static void main(String[] args){
+    Scanner in = new Scanner(System.in);
+    int s=0,n,t;
+    
+    n=in.nextInt();
+    t=n;
+    while(t!=0){
+     int k=t%10;
+     s=s*10+k;
+     t=t/10;
+    }
+if(n==s){
+    System.out.print("Palindrome");
+}
+else{
+   System.out.print("Not Palindrome"); 
+}
+}
+}
+ 
+
+
+#problem_4:
+package assIGNMENT2.assign2;
+import java.util.Scanner;
+public class a4 {
+    public static void main(String[] args){
+     Scanner input= new Scanner(System.in);
+
+       int a[]=new int[100000000];
+       for(int i=0;i<100000000;i++)a[i]=0;
+       int x;
+       int d[]=new int[10];
+       int v=0;
+       for(int i=0;i<10;i++) {
+           x=input.nextInt();
+            if(a[x]==0) {
+                a[x]++;
+                d[v++]=x;
+               }
+       }
+
+      System.out.println(v);
+       for(int i=0;i<v;i++) {
+           System.out.print(d[i]+" ");
+       }
+    }
+
+
+}
+
+
+
+// #problem_5:
+
+package assIGNMENT2.assign2;
+import java.util.Random;
+public class a5 {
+   public static void main(String[] args){
+       int a[]=new int [101];
+       for(int i=0;i<=100;i++) {
+           a[i]=(int)(Math.random()*101);
+       }
+
+       highest(a);
+      lowest(a);
+
+
+    }
+     public static void highest(int a[]) {
+         int max=a[0];
+         for(int j=1;j<=100;j++){
+         if (a[j]>max){
+             max=a[j];
+            }
+         }
+         int p=0;
+         for(int j=0;j<=100;j++){
+             if (a[j]==max){
+                p=j+1;
+                } }
+     System.out.println("position of Highest value "+ p);
+    }
+     public static void lowest(int a[]) {
+         int min=a[0];
+         for(int j=1;j<=100;j++){
+         if (a[j]<min){
+             min=a[j];
+            }
+         }
+         int p1=0;
+         for(int j=0;j<=100;j++){
+             if (a[j]==min){
+                p1=j+1;
+                }
+     }
+     System.out.print("position of minimum value "+ p1);
+     }     }
+ 
+ 
+ 
+ 
+ //Problem_6:
+
+package assIGNMENT2.assign2;
+import java.util.Scanner;
+public class a6 {
+    public static void main(String[] args){
+        Scanner input= new Scanner(System.in);
+       int i,j,temp;
+        int num=input.nextInt();
+        String name[]=new String[num];
+        int array[]=new int[num];
+         input.nextLine();
+        for( i=0;i<name.length;i++) {
+            name[i]=input.nextLine();  
+        }
+        for( i=0;i<array.length;i++) {
+            array[i]=input.nextInt();
+        }
+   
+        for (i = 0; i < ( num - 1 ); i++) {
+            for (j = 0; j < num - i - 1; j++) {
+              if (array[j] < array[j+1]) 
+              {
+                temp = array[j];
+                array[j] = array[j+1];
+                array[j+1] = temp;
+              }
+            }
+          }
+        for(i=0;i<num;i++)
+        System.out.println("Name  :"+name[i]+"  Score  :"+array[i]);
+    }
+}
+
