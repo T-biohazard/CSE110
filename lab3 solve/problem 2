@@ -1,0 +1,26 @@
+package Lab_3;
+import java.util.*;
+public class a_2 {
+           public static void main(String[] args) {
+       Scanner input= new Scanner(System.in);
+       String s=input.nextLine();
+       int cha=0;
+       int dig=0;
+       for(int i=0;i<s.length();i++) {
+           char y = s.charAt(i);
+           if(y>=(char)48 && y<=(char)57) {
+               dig++;
+           }
+           else if((y>=(char)65 && y<=(char)90) || (y>=(char)97 && y<=(char)122)) {
+               cha++;
+           }
+       }
+
+       System.out.println(cha+dig);
+       if(cha+dig>=10) {
+           System.out.println("Valid paSSWORD");
+       }
+       else {
+           System.out.println("inValid paSSWORD");
+       }
+    } }
