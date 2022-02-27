@@ -1,0 +1,169 @@
+
+package lab8;
+
+
+public class GeometricObject {
+  String color;
+  boolean filled;
+  
+ GeometricObject(){
+     
+ } 
+ GeometricObject(String color,boolean filled){
+     this.filled=filled;
+     this.color=color;
+ } 
+ 
+ public boolean filled(){
+     return filled;
+ }
+
+ public void setcolor(){
+     this.color=color;
+ }
+ public String getcolor(){
+     return color;
+ }
+ 
+public String toString(){
+    
+    return ""+getcolor()+""+filled();
+}
+}
+
+
+
+Package  lab8;
+
+
+public class Triangle extends GeometricObject {
+private double side1=1.0;
+private double side2=1.0;
+private double side3=1.0;
+    
+     Triangle(){
+         
+     }
+     
+     Triangle(double side1,double side2,double side3) throws IllegalTriangleException{
+        if(side1>=side2+side3){        
+                throw new IllegalTriangleException(side1);
+            }
+        
+         else if(side2>=side1+side3){
+                throw new IllegalTriangleException(side2);
+            }
+        
+           else if(side3>=side1+side2){
+                throw new IllegalTriangleException(side3);
+            }
+           else{
+               this.side1=side1;
+        this.side2=side2;
+        this.side3=side3;
+           }
+        }
+     
+     Triangle(double side1 , double side2 , double side3 , String color , boolean filled){
+        this.side1=side1;
+        this.side2=side2;
+        this.side3=side3;
+        this.color=color;
+        this.filled=filled;
+    }
+     public void setside1(){
+         this.side1=side1;
+     }
+     public void setside2(){
+         this.side2=side2;
+     }
+     public void setside3(){
+         this.side3=side3;
+     }
+     public double getside3(){
+         return side3;
+     }
+     public double getside2(){
+         return side2;
+     }
+     public double getside1(){
+         return side1;
+     }
+     
+     public double getPerameter(){
+         return side1 + side2 + side3 ;
+     }
+     public double getAria(){
+         return (side1 + side2 + side3) / 2;
+     }
+     public void filled(String s){
+     	
+        
+          System.out.println("YES"+"\n"+s);
+     
+     }
+     public void notfilled(){
+      System.out.println("not filled");
+     }
+    
+     public String toString(){
+         return " Triangle: Side 1 = " + side1 + " Side 2 = " + side2
+           + " Side 3 = " + side3;
+     }}
+     
+
+
+
+package lab8;
+
+
+public class IllegalTriangleException extends Exception{
+    private double side=1.0;
+    
+    public IllegalTriangleException(double side){
+        super(side);
+    }
+    public double getside(){
+        return side;
+    }
+}
+
+
+
+
+
+package lab8;
+
+import java.util.*;
+public class main {
+public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        
+        double side1 , side2 , side3;
+        String color;
+        boolean filled;
+        
+        System.out.println("Enter side 1 :");
+        side1 = input.nextDouble();
+        System.out.println("Enter side 2 :");
+        side2 = input.nextDouble();
+        System.out.println("Enter side 3 :");
+        side3 = input.nextDouble();
+        System.out.println("Enter color of the triangle :");
+        color = input.next();
+        System.out.println("Enter if the triangle is filled or not (True/False) :");
+        filled = input.nextBoolean();
+
+        Triangle x = new Triangle(side1 , side2 , side3,color,filled );
+
+        System.out.println(x.toString());
+        System.out.println("area  : "+x.getAria());
+        System.out.println( "perimeter : "+x.getPerameter());
+       System.out.println("The color of the triangle is : "+x.color);
+                System.out.println("Triangled is filled : "+x.filled);
+    }
+}
+
+
+
+ 
